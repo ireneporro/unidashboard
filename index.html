@@ -169,9 +169,22 @@ body.dark{color:#f0eaf8}
 .hbadge{background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:5px 12px;font-size:11px;color:rgba(255,255,255,.9)}
 .hbadge b{color:#fff}
 
+/* ── PAGE TABS ── */
+.page-tabs{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;gap:0;position:relative;z-index:10;margin-top:-10px;margin-bottom:8px}
+@media(min-width:600px){.page-tabs{padding:0 24px}}
+.page-tab{font-family:'DM Serif Display',serif;font-size:14px;padding:10px 22px;border:none;background:transparent;color:#a08878;cursor:pointer;position:relative;transition:color .2s;letter-spacing:-.2px}
+.page-tab::after{content:'';position:absolute;bottom:0;left:12px;right:12px;height:2px;background:linear-gradient(135deg,#9b6fc4,#c17b9e);border-radius:2px;transform:scaleX(0);transition:transform .25s}
+.page-tab.active{color:#2d2020}
+.page-tab.active::after{transform:scaleX(1)}
+.page-tab:hover{color:#2d2020}
+body.dark .page-tab{color:#7060a0}
+body.dark .page-tab.active{color:#f0eaf8}
+body.dark .page-tab:hover{color:#f0eaf8}
+.wrap.hidden{display:none}
+
 .wrap{max-width:1100px;margin:0 auto;padding:0 16px 100px}
 @media(min-width:600px){.wrap{padding:0 24px 100px}}
-.countdown-hero{background:#fffdf9;border-radius:16px;padding:22px 20px;margin:-20px 0 22px;position:relative;z-index:10;box-shadow:0 8px 40px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.06);display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;transition:background .4s}
+.countdown-hero{background:#fffdf9;border-radius:16px;padding:22px 20px;margin:0 0 22px;position:relative;z-index:10;box-shadow:0 8px 40px rgba(0,0,0,.1),0 2px 8px rgba(0,0,0,.06);display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;transition:background .4s}
 @media(max-width:480px){.countdown-hero{grid-template-columns:1fr;gap:14px}}
 .cd-label{font-family:'VT323',monospace;font-size:11px;letter-spacing:3px;color:#c9a882;text-transform:uppercase;margin-bottom:5px}
 .cd-subject{font-family:'DM Serif Display',serif;font-size:19px;color:#2d2020;margin-bottom:3px;line-height:1.1}
@@ -360,6 +373,47 @@ body.dark .pdf-card-name{color:#f0eaf8}
 .rain-vol::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle,#c9a882,#a08060);border:2px solid rgba(30,15,40,.5);box-shadow:0 2px 6px rgba(0,0,0,.3);cursor:pointer}
 .rain-vol::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:radial-gradient(circle,#c9a882,#a08060);border:2px solid rgba(30,15,40,.5);box-shadow:0 2px 6px rgba(0,0,0,.3);cursor:pointer}
 
+/* ── RECURSOS ── */
+.res-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.res-tab{font-family:'DM Serif Display',serif;font-size:12px;padding:7px 16px;border-radius:20px;border:1.5px solid #e8d8c8;background:transparent;color:#a08878;cursor:pointer;transition:.2s}
+.res-tab:hover{border-color:#c9a882;color:#2d2020}
+.res-tab.active{background:#2d2020;border-color:#2d2020;color:#f5efe6}
+body.dark .res-tab{border-color:#3a2055;color:#7060a0}
+body.dark .res-tab:hover{border-color:#9b6fc4;color:#f0eaf8}
+body.dark .res-tab.active{background:#f0eaf8;border-color:#f0eaf8;color:#1e1430}
+
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:8px}
+@media(max-width:480px){.res-grid{grid-template-columns:1fr}}
+
+.res-card{background:#fffdf9;border:1.5px solid rgba(45,32,32,.08);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s,background .4s}
+.res-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--res-accent,#C8451A);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.res-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(45,32,32,.09);border-color:rgba(45,32,32,.15)}
+.res-card:hover::before{transform:scaleX(1)}
+.res-card[data-cat="blogs"]{--res-accent:#C8451A}
+.res-card[data-cat="newsletters"]{--res-accent:#9b6fc4}
+.res-card[data-cat="herramientas"]{--res-accent:#7aab8c}
+.res-card[data-cat="libros"]{--res-accent:#d4a84b}
+
+.res-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.res-card-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;background:rgba(45,32,32,.04);flex-shrink:0}
+.res-card-tag{font-family:'VT323',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--res-accent,#C8451A);padding:3px 9px;border-radius:20px;background:color-mix(in srgb,var(--res-accent,#C8451A) 8%,transparent)}
+.res-card-name{font-family:'DM Serif Display',serif;font-size:15px;color:#2d2020;line-height:1.2}
+.res-card-desc{font-size:12px;color:#a08878;line-height:1.5;flex-grow:1}
+.res-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid rgba(45,32,32,.06)}
+.res-card-url{font-size:11px;color:#c9a882}
+.res-card-arrow{width:24px;height:24px;border-radius:50%;background:rgba(45,32,32,.05);display:flex;align-items:center;justify-content:center;font-size:11px;color:#a08878;transition:.2s}
+.res-card:hover .res-card-arrow{background:#2d2020;color:#f5efe6}
+.res-card.hidden{display:none}
+.res-counter{font-family:'VT323',monospace;font-size:11px;color:#c9a882;letter-spacing:1px;margin-bottom:20px}
+
+body.dark .res-card{background:#1e1430;border-color:rgba(155,111,196,.1)}
+body.dark .res-card:hover{border-color:rgba(155,111,196,.25);box-shadow:0 12px 32px rgba(0,0,0,.2)}
+body.dark .res-card-name{color:#f0eaf8}
+body.dark .res-card-icon{background:rgba(255,255,255,.04)}
+body.dark .res-card-footer{border-color:rgba(155,111,196,.08)}
+body.dark .res-card-arrow{background:rgba(255,255,255,.06)}
+body.dark .res-card:hover .res-card-arrow{background:#f0eaf8;color:#1e1430}
+
 /* ── PDF MODAL ── */
 .pdf-modal{position:fixed;inset:0;z-index:9998;background:rgba(10,5,18,.92);backdrop-filter:blur(12px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .35s}
 .pdf-modal.active{opacity:1;pointer-events:all}
@@ -450,7 +504,12 @@ body.dark .pdf-card-name{color:#f0eaf8}
   </div>
 </div>
 
-<div class="wrap">
+<div class="page-tabs">
+  <button class="page-tab active" onclick="switchPage('dashboard')">Dashboard</button>
+  <button class="page-tab" onclick="switchPage('recursos')">Recursos</button>
+</div>
+
+<div class="wrap" id="page-dashboard">
   <div class="countdown-hero">
     <div>
       <div class="cd-label">⏱ próximo parcial</div>
@@ -549,6 +608,21 @@ body.dark .pdf-card-name{color:#f0eaf8}
     </div>
   </div>
 
+  <footer><span class="deco-star">✦</span> hecho con cariño · datos en notion · 2026 <span class="deco-star">✦</span></footer>
+</div>
+
+<div class="wrap hidden" id="page-recursos">
+  <div class="sec-title" style="margin-top:20px">Recursos de <em>Diseño & Marketing</em></div>
+  <div class="sec-sub">Links, blogs y libros que uso como referencia</div>
+  <div class="res-tabs" id="res-tabs">
+    <button class="res-tab active" data-filter="all">Todos</button>
+    <button class="res-tab" data-filter="blogs">Blogs</button>
+    <button class="res-tab" data-filter="newsletters">Newsletters</button>
+    <button class="res-tab" data-filter="herramientas">Herramientas</button>
+    <button class="res-tab" data-filter="libros">Libros</button>
+  </div>
+  <div class="res-grid" id="res-grid"></div>
+  <div class="res-counter" id="res-counter"></div>
   <footer><span class="deco-star">✦</span> hecho con cariño · datos en notion · 2026 <span class="deco-star">✦</span></footer>
 </div>
 
@@ -831,6 +905,54 @@ function rainSetVol(val){
 }
 
 window.addEventListener('resize',()=>{if(rainPlaying)rainInitCanvas()});
+
+/* ── RECURSOS ── */
+const RESOURCES=[
+  {cat:'blogs',icon:'✦',name:'UX Collective',desc:'Artículos de practitioners reales sobre UX, diseño de producto y tendencias.',url:'uxdesign.cc',href:'https://uxdesign.cc'},
+  {cat:'blogs',icon:'◈',name:'Nielsen Norman Group',desc:'La referencia académica del UX. Ideal para argumentar decisiones con research sólido.',url:'nngroup.com',href:'https://www.nngroup.com/articles'},
+  {cat:'blogs',icon:'◎',name:'First Round Review',desc:'Cómo piensan los mejores equipos de producto. Orientado a startups y diseño estratégico.',url:'review.firstround.com',href:'https://review.firstround.com'},
+  {cat:'newsletters',icon:'◉',name:"Lenny's Newsletter",desc:'El referente actual en product. Estrategia, growth, diseño y casos reales.',url:'lennysnewsletter.com',href:'https://www.lennysnewsletter.com'},
+  {cat:'newsletters',icon:'⬡',name:'AI Goodies',desc:'De Ioana Teleanu, ex lead designer en Miro AI. Tips e insights para designers.',url:'aigoodies.design',href:'https://www.notboring.co'},
+  {cat:'newsletters',icon:'▲',name:'The Rundown AI',desc:'El newsletter de AI más grande. Enfocado en la era agéntica y casos de uso reales.',url:'therundown.ai',href:'https://therundown.ai'},
+  {cat:'newsletters',icon:'◆',name:"Elena's Growth Scoop",desc:'Product-led growth y sales para B2B SaaS. Diseño que impacta métricas de negocio.',url:'growthscoop.com',href:'https://www.growthscoop.com'},
+  {cat:'herramientas',icon:'⬤',name:'Hotjar',desc:'Heatmaps y grabaciones de sesiones de usuarios reales. Ideal para entender comportamiento.',url:'hotjar.com',href:'https://www.hotjar.com'},
+  {cat:'herramientas',icon:'◐',name:'Shield',desc:'Analítica profunda de LinkedIn. Para entender qué contenido funciona y por qué.',url:'shield.app',href:'https://shield.app'},
+  {cat:'herramientas',icon:'◑',name:'Mixpanel',desc:'Eventos y funnels en productos digitales. El estándar en SaaS.',url:'mixpanel.com',href:'https://mixpanel.com'},
+  {cat:'herramientas',icon:'◒',name:'HubSpot',desc:'El CRM más completo para B2B con versión gratuita. Pipeline de marketing y ventas.',url:'hubspot.com',href:'https://www.hubspot.com'},
+  {cat:'libros',icon:'▣',name:'Obviously Awesome',desc:'April Dunford. El libro de posicionamiento por excelencia. Esencial para SaaS B2B.',url:'April Dunford',href:'https://www.aprildunford.com/obviously-awesome'},
+  {cat:'libros',icon:'▤',name:'Continuous Discovery Habits',desc:'Teresa Torres. Conecta research, producto y estrategia.',url:'Teresa Torres',href:'https://www.producttalk.org/continuous-discovery-habits'},
+  {cat:'libros',icon:'▥',name:'The Mom Test',desc:'Rob Fitzpatrick. Cambia cómo pensás en research y en entender usuarios reales.',url:'Rob Fitzpatrick',href:'https://www.momtestbook.com'},
+  {cat:'libros',icon:'▦',name:'Hooked',desc:'Nir Eyal. La base del diseño de hábitos y engagement. Retención y loops de producto.',url:'Nir Eyal',href:'https://www.nirandfar.com/hooked'},
+];
+const TAG_LABELS={blogs:'Blog',newsletters:'Newsletter',herramientas:'Herramienta',libros:'Libro'};
+function renderResources(filter){
+  const grid=document.getElementById('res-grid');
+  const items=filter==='all'?RESOURCES:RESOURCES.filter(r=>r.cat===filter);
+  grid.innerHTML=items.map(r=>`<a class="res-card" href="${r.href}" target="_blank" data-cat="${r.cat}"><div class="res-card-top"><div class="res-card-icon">${r.icon}</div><span class="res-card-tag">${TAG_LABELS[r.cat]}</span></div><div class="res-card-name">${r.name}</div><div class="res-card-desc">${r.desc}</div><div class="res-card-footer"><span class="res-card-url">${r.url}</span><span class="res-card-arrow">↗</span></div></a>`).join('');
+  document.getElementById('res-counter').textContent=`${items.length} recurso${items.length!==1?'s':''}`;
+}
+document.getElementById('res-tabs').addEventListener('click',e=>{
+  if(!e.target.classList.contains('res-tab'))return;
+  document.querySelectorAll('.res-tab').forEach(t=>t.classList.remove('active'));
+  e.target.classList.add('active');
+  renderResources(e.target.dataset.filter);
+});
+renderResources('all');
+
+/* ── PAGE SWITCH ── */
+function switchPage(page){
+  const dash=document.getElementById('page-dashboard');
+  const rec=document.getElementById('page-recursos');
+  const tabs=document.querySelectorAll('.page-tab');
+  if(page==='dashboard'){
+    dash.classList.remove('hidden');rec.classList.add('hidden');
+    tabs[0].classList.add('active');tabs[1].classList.remove('active');
+  }else{
+    dash.classList.add('hidden');rec.classList.remove('hidden');
+    tabs[1].classList.add('active');tabs[0].classList.remove('active');
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
 
 pomDraw();
 
