@@ -628,7 +628,8 @@ function dbG(c,d){if(db)return db.collection(c).doc(d).get();return Promise.reso
 /* AUTH */
 function buildLoginPetals(){var c=document.getElementById('login-petals');for(var i=0;i<15;i++){var p=document.createElement('div');p.className='login-petal';var s=6+Math.random()*12;p.style.cssText='left:'+Math.random()*100+'%;width:'+s+'px;height:'+s+'px;animation:lpFall '+(8+Math.random()*10)+'s '+Math.random()*12+'s linear infinite';c.appendChild(p)}}
 buildLoginPetals();
-function loginGoogle(){if(!auth){showApp();return}var provider=new firebase.auth.GoogleAuthProvider();auth.signInWithPopup(provider).catch(function(e){document.getElementById('login-err').textContent=e.message})}
+var loginBusy=false;
+function loginGoogle(){if(loginBusy)return;if(!auth){showApp();return}loginBusy=true;document.getElementById('login-err').textContent='';var provider=new firebase.auth.GoogleAuthProvider();auth.signInWithPopup(provider).catch(function(e){document.getElementById('login-err').textContent=e.message;loginBusy=false}).then(function(){loginBusy=false})}
 function showApp(){document.getElementById('login-screen').classList.add('hide');document.getElementById('app-content').style.display='block';initApp()}
 function confirmLogout(){document.getElementById('logout-modal').classList.add('on')}
 function cancelLogout(){document.getElementById('logout-modal').classList.remove('on')}
