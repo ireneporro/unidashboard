@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Uni Dashboard</title>
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAa5JREFUWEftlj1OAzEQhe8mUiREQ0VBR8EZOAMlNadYTsAZqCm5AhUVDRIFEhJCKG+1K9uTmfV6E4mfKp7PvG/8ZuwGW/40tvz+sHMAV8BnAC62YLsAPgFcA/gJuf8U3gPdJX8E+BjIvAXwF2AAJwD2EVKoAb8Bz5MCIP3tmoipgJOcgVB+FkAuiSUFVwCeUgLKeagTsJJrACEELiSk5CJuAbznBMYAfoFBWF6GZT2zJfAM4CLn3LIqHPWA2DPsUAUDOANwm5PpAuAAwnhYiHn5wCO7ecpAKr2PYBDADeLhIiHbwAsAPjQIa4A7JkQ0fDN4QOAXwDnORcrUYk+CsmL3kqoRH/4VUoAh3cA6NMd5py/rjcIPgE0qcS5XYa3DnDM0bBR9SnALlNAPeT6TU+IPzoBeBhjSnoaVi3+1gOgpWa0YD0VUHW0qwNqGNZCOgmpcA7gahFWqD/8PIBSAlIK7gC8WoS5gkPA2wnhCyBeRK0B3AHYTgkZGlJK1i1AmsO3EsJPgNDXfCpArm2YAvC0SIiY+BqAngDo/yF6FgkRE98C0BHA3n+H6B/Mn8Qv0DjDoAAAAAElFTkSuQmCC">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAa5JREFUWEftlj1OAzEQhe8mUiREQ0VBR8EZOAMlNadYTsAZqCm5AhUVDRIFEhJCKG+1K9uTmfV6E4mfKp7PvG/8ZuwGW/40tvz+sHMAVwBnAC62YLsAPgFcA/gJuf8U3gPdJX8E+BjIvAXwF2AAJwD2EVKoAb8Bz5MCIP3tmoipgJOcgVB+FkAuiSUFVwCeUgLKeagTsJJrACEELiSk5CJuAbznBMYAfoFBWF6GZT2zJfAM4CLn3LIqHPWA2DPsUAUDOANwm5PpAuAAwnhYiHn5wCO7ecpAKr2PYBDADeLhIiHbwAsAPjQIa4A7JkQ0fDN4QOAXwDnORcrUYk+CsmL3kqoRH/4VUoAh3cA6NMd5py/rjcIPgE0qcS5XYa3DnDM0bBR9SnALlNAPeT6TU+IPzoBeBhjSnoaVi3+1gOgpWa0YD0VUHW0qwNqGNZCOgmpcA7gahFWqD/8PIBSAlIK7gC8WoS5gkPA2wnhCyBeRK0B3AHYTgkZGlJK1i1AmsO3EsJPgNDXfCpArm2YAvC0SIiY+BqAngDo/yF6FgkRE98C0BHA3n+H6B/Mn8Qv0DjDoAAAAAElFTkSuQmCC">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=VT323&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
@@ -651,7 +651,7 @@ body.dark footer{border-color:#3a2055}
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-<script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
+<script async defer src="https://assets.pinterest.com/js/pinit.js" onload="window._pinReady=true"></script>
 <script>
 var db=null,auth=null;
 try{if(typeof firebase!=='undefined'){firebase.initializeApp({apiKey:'AIzaSyAO5pVAy3bKW3dK7Iq6LO2VKRGfga2Gd-k',authDomain:'unidashboardire.firebaseapp.com',projectId:'unidashboardire',storageBucket:'unidashboardire.firebasestorage.app',messagingSenderId:'76145974513',appId:'1:76145974513:web:ae3c30b498715b6e075d50'});db=firebase.firestore();auth=firebase.auth()}}catch(e){}
@@ -663,15 +663,14 @@ function buildLoginPetals(){var c=document.getElementById('login-petals');for(va
 buildLoginPetals();
 var loginBusy=false;
 function loginGoogle(){if(loginBusy)return;if(!auth){showApp();return}loginBusy=true;document.getElementById('login-err').textContent='';var provider=new firebase.auth.GoogleAuthProvider();auth.signInWithPopup(provider).catch(function(e){document.getElementById('login-err').textContent=e.message;loginBusy=false}).then(function(){loginBusy=false})}
-function showApp(){document.getElementById('login-screen').classList.add('hide');document.getElementById('app-content').style.display='block';initApp();setTimeout(function(){if(window.PinUtils)window.PinUtils.build()},500)}
+function pinBuild(){var tries=0;function go(){if(window.PinUtils){try{window.PinUtils.build()}catch(e){}}else if(++tries<20){setTimeout(go,600)}}setTimeout(go,300)}
+function showApp(){document.getElementById('login-screen').classList.add('hide');document.getElementById('app-content').style.display='block';initApp();pinBuild()}
 function confirmLogout(){document.getElementById('logout-modal').classList.add('on')}
 function cancelLogout(){document.getElementById('logout-modal').classList.remove('on')}
 function logout(){document.getElementById('logout-modal').classList.remove('on');if(auth)auth.signOut();document.getElementById('login-screen').classList.remove('hide');document.getElementById('app-content').style.display='none'}
 
 var appReady=false;
 if(auth){auth.onAuthStateChanged(function(user){if(user){showApp()}else{document.getElementById('login-screen').classList.remove('hide');document.getElementById('app-content').style.display='none'}})}else{showApp()}
-
-/* DATA */
 
 /* DATA */
 var CL=[
@@ -717,7 +716,6 @@ var MA={'1f60a':{p:'#F59E0B',s:'#F97316',g:'linear-gradient(135deg,#F59E0B,#F973
 function setMood(btn){var m=btn.dataset.m,a=MA[m];document.querySelectorAll('.mood-b').forEach(function(b){b.classList.toggle('on',b.dataset.m===m)});if(!a)return;var hs=document.querySelector('.hero h1 span');if(hs){hs.style.background=a.g;hs.style.webkitBackgroundClip='text'}document.querySelectorAll('.st em').forEach(function(e){e.style.color=a.p});document.querySelectorAll('.cd-num').forEach(function(n){n.style.background=a.g;n.style.webkitBackgroundClip='text';n.style.webkitTextFillColor='transparent'});var dn=document.querySelector('.cal-dname');if(dn)dn.style.color=a.p;var ms=document.getElementById('mood-sty');if(!ms){ms=document.createElement('style');ms.id='mood-sty';document.head.appendChild(ms)}ms.textContent='.ptab.active::after{background:'+a.g+'!important}.pb.pri,.nl,.rain-btn,.mp-b,.notes-ab{background:'+a.g+'!important}.cuatri-fi{background:linear-gradient(90deg,'+a.p+','+a.s+',#d4a84b)!important}';dbS('settings','mood',{m:m,d:new Date().toISOString().slice(0,10)})}
 function loadMood(){dbG('settings','mood').then(function(doc){if(doc.exists){var d=doc.data(),t=new Date().toISOString().slice(0,10);if(d.d===t){var b=document.querySelector('.mood-b[data-m="'+d.m+'"]');if(b)setMood(b)}}}).catch(function(){})}
 
-/* CAT */
 /* CLOCKS */
 function updClocks(){var zs=[{id:'es',tz:'Europe/Madrid',f:'es-ES'},{id:'ar',tz:'America/Argentina/Buenos_Aires',f:'es-AR'},{id:'la',tz:'America/Los_Angeles',f:'en-US'}],n=new Date();zs.forEach(function(z){document.getElementById('clk-'+z.id).textContent=n.toLocaleTimeString(z.f,{hour:'2-digit',minute:'2-digit',timeZone:z.tz});document.getElementById('clk-'+z.id+'d').textContent=n.toLocaleDateString(z.f,{day:'numeric',month:'short',timeZone:z.tz})})}
 
