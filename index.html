@@ -157,13 +157,9 @@ body.dark .cuatri-tr{background:#3a2055}
 /* cat + clock row */
 .cc-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
 @media(max-width:600px){.cc-row{grid-template-columns:1fr}}
-.cat-c{background:#fffdf9;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.07);transition:background .4s;text-align:center;position:relative}
-.cat-iw{height:200px;overflow:hidden;position:relative;background:linear-gradient(135deg,#f5edf8,#fdf0f5)}
-.cat-iw img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-.cat-c:hover .cat-iw img{transform:scale(1.05)}
-.cat-cap{padding:10px 14px;font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:#a08878}
-.cat-ref{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border:none;border-radius:50%;width:28px;height:28px;font-size:13px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center}
-.cat-ref:hover{transform:rotate(180deg)}
+.cat-c{background:#fffdf9;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.07);transition:background .4s;position:relative}
+.pin-embed{width:100%;height:100%;min-height:200px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.pin-embed span{border-radius:14px!important;overflow:hidden!important}
 body.dark .cat-c{background:#1e1430}
 .clocks{background:#fffdf9;border-radius:14px;padding:18px 14px;box-shadow:0 4px 18px rgba(0,0,0,.07);display:flex;justify-content:space-around;align-items:center;gap:8px;transition:background .4s}
 .clk{text-align:center;flex:1}
@@ -415,7 +411,11 @@ footer{text-align:center;font-family:'Playfair Display',serif;font-style:italic;
 .ds{display:inline-block;color:#d4a84b;font-size:10px;margin:0 4px;animation:tw 2s ease-in-out infinite}
 @keyframes tw{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}}
 
-/* recursos */
+/* pinterest */
+.pin-section{margin-bottom:24px}
+.pin-wrap{background:#fffdf9;border-radius:14px;padding:16px;box-shadow:0 4px 18px rgba(0,0,0,.07);overflow:hidden;transition:background .4s}
+.pin-wrap a{display:block;text-align:center}
+body.dark .pin-wrap{background:#1e1430}
 .res-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
 .res-tab{font-family:'DM Serif Display',serif;font-size:12px;padding:7px 16px;border-radius:20px;border:1.5px solid #e8d8c8;background:transparent;color:#a08878;cursor:pointer;transition:.2s}
 .res-tab:hover{border-color:#c9a882;color:#2d2020}
@@ -576,7 +576,7 @@ body.dark footer{border-color:#3a2055}
   <div class="cuatri"><div class="cuatri-top"><span class="cuatri-l">progreso del cuatrimestre</span><span class="cuatri-p" id="cuatri-p">--%</span></div><div class="cuatri-tr"><div class="cuatri-fi" id="cuatri-fi" style="width:0%"></div></div><div class="cuatri-ms"><span>mar</span><span>abr</span><span>may</span><span>jun</span><span>jul</span></div></div>
   <div class="mood"><span class="mood-l">mood de hoy</span><button class="mood-b" onclick="setMood(this)" data-m="1f60a">&#x1f60a;</button><button class="mood-b" onclick="setMood(this)" data-m="1f634">&#x1f634;</button><button class="mood-b" onclick="setMood(this)" data-m="1f525">&#x1f525;</button><button class="mood-b" onclick="setMood(this)" data-m="1f635">&#x1f635;</button><button class="mood-b" onclick="setMood(this)" data-m="1f327">&#x1f327;&#xfe0f;</button><button class="mood-b" onclick="setMood(this)" data-m="2728">&#x2728;</button></div>
   <div class="cc-row">
-    <div class="cat-c"><div class="cat-iw"><img id="cat-img" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&h=400&fit=crop" alt="aesthetic"><button class="cat-ref" onclick="loadCat()">&#x21bb;</button></div><div class="cat-cap" id="cat-cap">tu dosis diaria de calma</div></div>
+    <div class="cat-c"><div class="pin-embed"><a data-pin-do="embedBoard" data-pin-board-width="400" data-pin-scale-height="200" data-pin-scale-width="80" href="https://ar.pinterest.com/ireneporro16/artdesign/"></a></div></div>
     <div class="clocks"><div class="clk"><div class="clk-f">&#x1f1ea;&#x1f1f8;</div><div class="clk-t" id="clk-es">--:--</div><div class="clk-c">Alicante</div><div class="clk-d" id="clk-esd"></div></div><div class="clk"><div class="clk-f">&#x1f1e6;&#x1f1f7;</div><div class="clk-t" id="clk-ar">--:--</div><div class="clk-c">Argentina</div><div class="clk-d" id="clk-ard"></div></div><div class="clk"><div class="clk-f">&#x1f1fa;&#x1f1f8;</div><div class="clk-t" id="clk-la">--:--</div><div class="clk-c">Los Angeles</div><div class="clk-d" id="clk-lad"></div></div></div>
   </div>
   <div class="pol-w"><div class="pol"><img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=320&h=240&fit=crop" alt="Praha"><div class="pol-cap">Praha</div></div><div class="pol"><img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=320&h=240&fit=crop" alt="Edinburgh"><div class="pol-cap">Edinburgh</div></div><div class="pol"><img src="https://images.unsplash.com/photo-1559113202-c916b8e44373?w=320&h=240&fit=crop" alt="Bruxelles"><div class="pol-cap">Bruxelles</div></div><div class="pol"><img src="https://images.unsplash.com/photo-1558551649-e44c8f992010?w=320&h=240&fit=crop" alt="Bruges"><div class="pol-cap">Bruges</div></div><div class="pol"><img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=320&h=240&fit=crop" alt="Venezia"><div class="pol-cap">Venezia</div></div><div class="pol"><img src="https://images.unsplash.com/photo-1585208798174-6cedd86e019a?w=320&h=240&fit=crop" alt="Lisboa"><div class="pol-cap">Lisboa</div></div></div>
@@ -651,6 +651,7 @@ body.dark footer{border-color:#3a2055}
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+<script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
 <script>
 var db=null,auth=null;
 try{if(typeof firebase!=='undefined'){firebase.initializeApp({apiKey:'AIzaSyAO5pVAy3bKW3dK7Iq6LO2VKRGfga2Gd-k',authDomain:'unidashboardire.firebaseapp.com',projectId:'unidashboardire',storageBucket:'unidashboardire.firebasestorage.app',messagingSenderId:'76145974513',appId:'1:76145974513:web:ae3c30b498715b6e075d50'});db=firebase.firestore();auth=firebase.auth()}}catch(e){}
@@ -662,7 +663,7 @@ function buildLoginPetals(){var c=document.getElementById('login-petals');for(va
 buildLoginPetals();
 var loginBusy=false;
 function loginGoogle(){if(loginBusy)return;if(!auth){showApp();return}loginBusy=true;document.getElementById('login-err').textContent='';var provider=new firebase.auth.GoogleAuthProvider();auth.signInWithPopup(provider).catch(function(e){document.getElementById('login-err').textContent=e.message;loginBusy=false}).then(function(){loginBusy=false})}
-function showApp(){document.getElementById('login-screen').classList.add('hide');document.getElementById('app-content').style.display='block';initApp()}
+function showApp(){document.getElementById('login-screen').classList.add('hide');document.getElementById('app-content').style.display='block';initApp();setTimeout(function(){if(window.PinUtils)window.PinUtils.build()},500)}
 function confirmLogout(){document.getElementById('logout-modal').classList.add('on')}
 function cancelLogout(){document.getElementById('logout-modal').classList.remove('on')}
 function logout(){document.getElementById('logout-modal').classList.remove('on');if(auth)auth.signOut();document.getElementById('login-screen').classList.remove('hide');document.getElementById('app-content').style.display='none'}
@@ -717,25 +718,6 @@ function setMood(btn){var m=btn.dataset.m,a=MA[m];document.querySelectorAll('.mo
 function loadMood(){dbG('settings','mood').then(function(doc){if(doc.exists){var d=doc.data(),t=new Date().toISOString().slice(0,10);if(d.d===t){var b=document.querySelector('.mood-b[data-m="'+d.m+'"]');if(b)setMood(b)}}}).catch(function(){})}
 
 /* CAT */
-var AEST=[
-{src:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=500&h=400&fit=crop',cap:'cafe y calma'},
-{src:'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=500&h=400&fit=crop',cap:'flores de primavera'},
-{src:'https://images.unsplash.com/photo-1526336024174-e58f5cdd8e13?w=500&h=400&fit=crop',cap:'gatito soñador'},
-{src:'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&h=400&fit=crop',cap:'libros y tarde'},
-{src:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=400&fit=crop',cap:'atardecer dorado'},
-{src:'https://images.unsplash.com/photo-1490750967868-88aa4f44baee?w=500&h=400&fit=crop',cap:'vintage vibes'},
-{src:'https://images.unsplash.com/photo-1501820488136-72669149e0d4?w=500&h=400&fit=crop',cap:'velas y relax'},
-{src:'https://images.unsplash.com/photo-1574169208507-84376144848b?w=500&h=400&fit=crop',cap:'colores abstractos'},
-{src:'https://images.unsplash.com/photo-1511268559489-34b624fbfcf5?w=500&h=400&fit=crop',cap:'hojas de otoño'},
-{src:'https://images.unsplash.com/photo-1415369629372-26f2fe60c467?w=500&h=400&fit=crop',cap:'gatito curioso'},
-{src:'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=500&h=400&fit=crop',cap:'naturaleza fresca'},
-{src:'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=500&h=400&fit=crop',cap:'estudio y cafe'},
-{src:'https://images.unsplash.com/photo-1490349368154-73de9c9bc37c?w=500&h=400&fit=crop',cap:'campo de flores'},
-{src:'https://images.unsplash.com/photo-1509266272358-7701da638078?w=500&h=400&fit=crop',cap:'lluvia en la ventana'},
-{src:'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=500&h=400&fit=crop',cap:'paseo de perros'}
-];
-function loadCat(){var a=AEST[Math.floor(Math.random()*AEST.length)];document.getElementById('cat-img').src=a.src;document.getElementById('cat-cap').textContent=a.cap}
-
 /* CLOCKS */
 function updClocks(){var zs=[{id:'es',tz:'Europe/Madrid',f:'es-ES'},{id:'ar',tz:'America/Argentina/Buenos_Aires',f:'es-AR'},{id:'la',tz:'America/Los_Angeles',f:'en-US'}],n=new Date();zs.forEach(function(z){document.getElementById('clk-'+z.id).textContent=n.toLocaleTimeString(z.f,{hour:'2-digit',minute:'2-digit',timeZone:z.tz});document.getElementById('clk-'+z.id+'d').textContent=n.toLocaleDateString(z.f,{day:'numeric',month:'short',timeZone:z.tz})})}
 
